@@ -1,0 +1,86 @@
+---
+services:
+  grafana:
+    depends_on:
+      - jaeger
+      - prometheus
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    image: grafana/grafana
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 3000
+        target: 3000
+    volumes:
+      - source: grafana
+        target: /var/lib/grafana
+        type: volume
+      - source: ./Configurations/Grafana/dashboards
+        target: /etc/grafana/provisioning/dashboards
+        type: bind
+      - source: ./Configurations/Grafana/datasources
+        target: /etc/grafana/provisioning/datasources
+        type: bind
+  jaeger:
+    environment:
+      BADGER_DIRECTORY_KEY: /badger/key
+      BADGER_DIRECTORY_VALUE: /badger/data
+      BADGER_EPHEMERAL: "false"
+      SPAN_STORAGE_TYPE: badger
+    image: "jaegertracing/all-in-one:latest"
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 16686
+        target: 16686
+    volumes:
+      - source: jaeger
+        target: /badger
+        type: volume
+      - source: jaeger_tmp
+        target: /tmp
+        type: volume
+  opentelemetry-collector:
+    command:
+      [
+        "--config=/etc/otel-collector.config.yml",
+        "--feature-gates=pkg.translator.prometheus.NormalizeName",
+      ]
+    depends_on:
+      - jaeger
+    image: otel/opentelemetry-collector
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 4317
+        target: 4317
+      - mode: ingress
+        protocol: tcp
+        published: 55679
+        target: 55679
+    volumes:
+      - source: ./Configurations/OpenTelemetry/otel-collector.config.yml
+        target: /etc/otel-collector.config.yml
+        type: bind
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 9090
+        target: 9090
+    volumes:
+      - source: prometheus
+        target: /prometheus
+        type: volume
+      - source: ./Configurations/Prometheus/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        type: bind
+version: "3.7"
+volumes:
+  grafana: ~
+  jaeger: ~
+  jaeger_tmp: ~
+  prometheus: ~
