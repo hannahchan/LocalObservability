@@ -1,12 +1,34 @@
 ---
 global:
   scrape_interval: 10s
+
 scrape_configs:
-  - job_name: Application
+  # Application Metrics
+  - job_name: application
     static_configs:
       - targets:
           - "opentelemetry-collector:9090"
-  - job_name: OpenTelemetry-Collector
+
+  # Aggregated Trace Metrics
+  - job_name: aggregated-trace-metrics
+    static_configs:
+      - targets:
+          - "opentelemetry-collector:8889"
+
+  # OpenTelemetry Collector Metrics
+  - job_name: collector
     static_configs:
       - targets:
           - "opentelemetry-collector:8888"
+
+  # Jaeger Metrics
+  - job_name: jaeger
+    static_configs:
+      - targets:
+          - "jaeger:14269"
+
+  # Prometheus Metrics
+  - job_name: prometheus
+    static_configs:
+      - targets:
+          - "localhost:9090"

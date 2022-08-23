@@ -24,11 +24,14 @@ services:
         target: /etc/grafana/provisioning/datasources
         type: bind
   jaeger:
+    command: ["--query.ui-config", "/etc/jaeger/jaeger-ui.json"]
     environment:
+      SPAN_STORAGE_TYPE: badger
       BADGER_DIRECTORY_KEY: /badger/key
       BADGER_DIRECTORY_VALUE: /badger/data
       BADGER_EPHEMERAL: "false"
-      SPAN_STORAGE_TYPE: badger
+      METRICS_STORAGE_TYPE: prometheus
+      PROMETHEUS_SERVER_URL: http://prometheus:9090
     image: "jaegertracing/all-in-one:latest"
     ports:
       - mode: ingress
@@ -42,6 +45,9 @@ services:
       - source: jaeger_tmp
         target: /tmp
         type: volume
+      - source: ./Configurations/Jaeger/jaeger-ui.json
+        target: /etc/jaeger/jaeger-ui.json
+        type: bind
   opentelemetry-collector:
     command:
       [
@@ -50,7 +56,7 @@ services:
       ]
     depends_on:
       - jaeger
-    image: otel/opentelemetry-collector
+    image: otel/opentelemetry-collector-contrib
     ports:
       - mode: ingress
         protocol: tcp
