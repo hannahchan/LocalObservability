@@ -64,6 +64,10 @@ services:
         target: 4317
       - mode: ingress
         protocol: tcp
+        published: 4318
+        target: 4318
+      - mode: ingress
+        protocol: tcp
         published: 55679
         target: 55679
     volumes:

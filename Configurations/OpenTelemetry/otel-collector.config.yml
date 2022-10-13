@@ -7,6 +7,9 @@ receivers:
   otlp:
     protocols:
       grpc: ~
+      http:
+        cors:
+          allowed_origins: [http://*, https://*]
 
   # Dummy receiver that's never used, because a pipeline is required to have one.
   otlp/spanmetrics:
