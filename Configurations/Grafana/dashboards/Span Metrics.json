@@ -70,13 +70,13 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "Average Span Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Span Duration",
           "refId": "B"
@@ -179,12 +179,12 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "legendFormat": "Average Span Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "legendFormat": "Instant Span Duration",
           "refId": "B"
         }
@@ -225,26 +225,26 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "hide": false,
           "instant": true,
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
-          "expr": "histogram_quantile(0.95, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
-          "expr": "histogram_quantile(0.85, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "50th Percentile",
           "refId": "D"
@@ -377,22 +377,22 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
-          "expr": "histogram_quantile(0.95, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
-          "expr": "histogram_quantile(0.85, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(latency_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
           "refId": "D"
         }
@@ -445,13 +445,13 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "Average Span Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Span Rate",
           "refId": "B"
@@ -554,12 +554,12 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "legendFormat": "Average Span Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "legendFormat": "Instant Span Rate",
           "refId": "B"
         }
@@ -599,25 +599,25 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "All Spans",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "instant": true,
           "legendFormat": "OK",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "instant": true,
           "legendFormat": "UNSET",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "instant": true,
           "legendFormat": "ERROR",
           "refId": "D"
@@ -750,22 +750,22 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "legendFormat": "All Spans",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "legendFormat": "OK",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "legendFormat": "UNSET",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "legendFormat": "ERROR",
           "refId": "D"
         }
@@ -818,7 +818,7 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range])) /\nsum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "% OK",
           "refId": "A"
@@ -921,12 +921,12 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "legendFormat": "Average OK Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "legendFormat": "Instant OK Rate",
           "refId": "B"
         }
@@ -967,7 +967,7 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range])) /\nsum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "% UNSET",
           "refId": "A"
@@ -1070,12 +1070,12 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "legendFormat": "Average UNSET Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "legendFormat": "Instant UNSET Rate",
           "refId": "B"
         }
@@ -1116,7 +1116,7 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range])) /\nsum(increase(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
           "instant": true,
           "legendFormat": "% ERROR",
           "refId": "A"
@@ -1219,12 +1219,12 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "legendFormat": "Average ERROR Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "legendFormat": "Instant ERROR Rate",
           "refId": "B"
         }
@@ -1265,13 +1265,13 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "instant": true,
           "legendFormat": "Average OK Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
           "instant": true,
           "legendFormat": "Instant OK Rate",
           "refId": "B"
@@ -1313,13 +1313,13 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "instant": true,
           "legendFormat": "Average UNSET Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
           "instant": true,
           "legendFormat": "Instant UNSET Rate",
           "refId": "B"
@@ -1361,13 +1361,13 @@
       "pluginVersion": "8.5.0",
       "targets": [
         {
-          "expr": "sum(rate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "instant": true,
           "legendFormat": "Average ERROR Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(latency_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
+          "expr": "sum(irate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
           "instant": true,
           "legendFormat": "Instant ERROR Rate",
           "refId": "B"
@@ -1389,7 +1389,7 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(latency_count, service_name)",
+        "definition": "label_values(latency_milliseconds_count, service_name)",
         "hide": 0,
         "includeAll": false,
         "label": "Service Name",
@@ -1397,7 +1397,7 @@
         "name": "service_name",
         "options": [],
         "query": {
-          "query": "label_values(latency_count, service_name)",
+          "query": "label_values(latency_milliseconds_count, service_name)",
           "refId": "Prometheus-service-Variable-Query"
         },
         "refresh": 1,
@@ -1414,7 +1414,7 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(latency_count, operation)",
+        "definition": "label_values(latency_milliseconds_count, operation)",
         "hide": 0,
         "includeAll": false,
         "label": "Operation",
@@ -1422,7 +1422,7 @@
         "name": "operation",
         "options": [],
         "query": {
-          "query": "label_values(latency_count, operation)",
+          "query": "label_values(latency_milliseconds_count, operation)",
           "refId": "Prometheus-operation-Variable-Query"
         },
         "refresh": 1,
