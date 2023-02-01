@@ -67,7 +67,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -176,7 +176,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -222,11 +222,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
-          "hide": false,
           "instant": true,
           "legendFormat": "99th Percentile",
           "refId": "A"
@@ -374,24 +373,28 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "exemplar": false,
           "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
+          "exemplar": false,
           "expr": "histogram_quantile(0.95, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
+          "exemplar": false,
           "expr": "histogram_quantile(0.85, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
+          "exemplar": false,
           "expr": "histogram_quantile(0.50, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
           "refId": "D"
@@ -442,7 +445,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -551,7 +554,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -596,7 +599,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -747,7 +750,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -815,7 +818,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -918,7 +921,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
@@ -964,7 +967,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -1067,7 +1070,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
@@ -1113,7 +1116,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
@@ -1216,7 +1219,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
@@ -1262,7 +1265,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
@@ -1310,7 +1313,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
@@ -1358,7 +1361,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",

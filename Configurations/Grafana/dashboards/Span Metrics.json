@@ -67,7 +67,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -176,7 +176,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_sum{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) /\nsum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -222,7 +222,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "histogram_quantile(0.99, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
@@ -374,7 +374,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "histogram_quantile(0.99, sum(rate(latency_milliseconds_bucket{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range])) by (le))",
@@ -442,7 +442,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -551,7 +551,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -596,7 +596,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -747,7 +747,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -815,7 +815,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -918,7 +918,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
@@ -964,7 +964,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -1067,7 +1067,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
@@ -1113,7 +1113,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range])) /\nsum(increase(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=~\".+\"}[$__range]))",
@@ -1216,7 +1216,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
@@ -1262,7 +1262,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_OK\"}[$__range]))",
@@ -1310,7 +1310,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_UNSET\"}[$__range]))",
@@ -1358,7 +1358,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "expr": "sum(rate(latency_milliseconds_count{service_name=\"${service_name}\", operation=\"${operation}\", status_code=\"STATUS_CODE_ERROR\"}[$__range]))",
