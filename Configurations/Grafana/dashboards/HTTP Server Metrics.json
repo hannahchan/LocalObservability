@@ -18,10 +18,36 @@
       }
     ]
   },
+  "description": "View metrics related to inbound HTTP requests.",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Reference",
+      "tooltip": "Semantic Conventions for HTTP Metrics",
+      "type": "link",
+      "url": "https://opentelemetry.io/docs/reference/specification/metrics/semantic_conventions/http-metrics/"
+    },
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Related Dashboards",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "liveNow": false,
   "panels": [
     {
@@ -70,13 +96,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Request Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Request Duration",
           "refId": "B"
@@ -179,12 +205,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Average Request Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_sum{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) /\nsum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Instant Request Duration",
           "refId": "B"
         }
@@ -225,25 +251,25 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
-          "expr": "histogram_quantile(0.95, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
-          "expr": "histogram_quantile(0.85, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "50th Percentile",
           "refId": "D"
@@ -377,25 +403,25 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.95, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.85, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.50, sum(rate(http_server_duration_milliseconds_bucket{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_server_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
           "refId": "D"
         }
@@ -448,13 +474,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Request Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Request Rate",
           "refId": "B"
@@ -557,12 +583,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Average Request Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Instant Request Rate",
           "refId": "B"
         }
@@ -602,25 +628,25 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "All Requests",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Successes (2xx)",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Client Errors (4xx)",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Server Errors (5xx)",
           "refId": "D"
@@ -753,22 +779,22 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "All Requests",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Successes (2xx)",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Client Errors (4xx)",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Server Errors (5xx)",
           "refId": "D"
         }
@@ -821,7 +847,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Successes (2xx)",
           "refId": "A"
@@ -924,12 +950,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Average Success (2xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Instant Success (2xx) Rate",
           "refId": "B"
         }
@@ -970,7 +996,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Client Errors (4xx)",
           "refId": "A"
@@ -1073,12 +1099,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Average Client Error (4xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Instant Client Error (4xx) Rate",
           "refId": "B"
         }
@@ -1119,7 +1145,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\".+\"}[$__range]))",
+          "expr": "sum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range])) /\nsum(increase(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Server Errors (5xx)",
           "refId": "A"
@@ -1222,12 +1248,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Average Server Error (5xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "legendFormat": "Instant Server Error (5xx) Rate",
           "refId": "B"
         }
@@ -1268,13 +1294,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Success (2xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"2.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Success (2xx) Rate",
           "refId": "B"
@@ -1316,13 +1342,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Client Error (4xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"4.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Client Error (4xx) Rate",
           "refId": "B"
@@ -1364,13 +1390,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(rate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Server Error (5xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~\"${job:regex}\", http_method=~\"${http_method:regex}\", http_status_code=~\"5.*\"}[$__range]))",
+          "expr": "sum(irate(http_server_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_scheme=~`${http_scheme:regex}`, http_route=~`${http_route:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_host_name=~`${net_host_name:regex}`, net_host_port=~`${net_host_port:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Server Error (5xx) Rate",
           "refId": "B"
@@ -1407,8 +1433,7 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "allValue": ".+",
@@ -1432,8 +1457,151 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query",
-        "useTags": false
+        "type": "query"
+      },
+      {
+        "allValue": ".+",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, http_scheme)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP Scheme",
+        "multi": true,
+        "name": "http_scheme",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, http_scheme)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, http_route)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP Route",
+        "multi": true,
+        "name": "http_route",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, http_route)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, http_status_code)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP Status Code",
+        "multi": true,
+        "name": "http_status_code",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, http_status_code)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, http_flavor)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "HTTP Flavor",
+        "multi": true,
+        "name": "http_flavor",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, http_flavor)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, net_host_name)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Net. Host Name",
+        "multi": true,
+        "name": "net_host_name",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, net_host_name)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_server_duration_milliseconds_count, net_host_port)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Net. Host Port",
+        "multi": true,
+        "name": "net_host_port",
+        "options": [],
+        "query": {
+          "query": "label_values(http_server_duration_milliseconds_count, net_host_port)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
@@ -1456,8 +1624,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "HTTP Inbound",
-  "uid": "HttpIn",
+  "title": "HTTP Server Metrics",
+  "uid": "HttpServer",
   "version": 1,
   "weekStart": ""
 }
