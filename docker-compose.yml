@@ -2,11 +2,13 @@
 services:
   grafana:
     depends_on:
-      - jaeger
-      - prometheus
+      - mimir
+      - tempo
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_FEATURE_TOGGLES_ENABLE: tempoApmTable traceToMetrics
+      GF_USERS_DEFAULT_THEME: light
     image: grafana/grafana
     ports:
       - mode: ingress
@@ -23,31 +25,6 @@ services:
       - source: ./Configurations/Grafana/datasources
         target: /etc/grafana/provisioning/datasources
         type: bind
-  jaeger:
-    command: ["--query.ui-config", "/etc/jaeger/jaeger-ui.json"]
-    environment:
-      SPAN_STORAGE_TYPE: badger
-      BADGER_DIRECTORY_KEY: /badger/key
-      BADGER_DIRECTORY_VALUE: /badger/data
-      BADGER_EPHEMERAL: "false"
-      METRICS_STORAGE_TYPE: prometheus
-      PROMETHEUS_SERVER_URL: http://prometheus:9090
-    image: "jaegertracing/all-in-one:latest"
-    ports:
-      - mode: ingress
-        protocol: tcp
-        published: 16686
-        target: 16686
-    volumes:
-      - source: jaeger
-        target: /badger
-        type: volume
-      - source: jaeger_tmp
-        target: /tmp
-        type: volume
-      - source: ./Configurations/Jaeger/jaeger-ui.json
-        target: /etc/jaeger/jaeger-ui.json
-        type: bind
   opentelemetry-collector:
     command:
       [
@@ -55,8 +32,9 @@ services:
         "--feature-gates=pkg.translator.prometheus.NormalizeName",
       ]
     depends_on:
-      - jaeger
-    image: otel/opentelemetry-collector-contrib
+      - mimir
+      - tempo
+    image: otel/opentelemetry-collector
     ports:
       - mode: ingress
         protocol: tcp
@@ -68,29 +46,52 @@ services:
         target: 4318
       - mode: ingress
         protocol: tcp
+        published: 8888
+        target: 8888
+      - mode: ingress
+        protocol: tcp
         published: 55679
         target: 55679
     volumes:
       - source: ./Configurations/OpenTelemetry/otel-collector.config.yml
         target: /etc/otel-collector.config.yml
         type: bind
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - mode: ingress
-        protocol: tcp
-        published: 9090
-        target: 9090
+  mimir:
+    depends_on:
+      - minio
+    image: grafana/mimir
+    command: ["-config.file=/etc/mimir.yml"]
     volumes:
-      - source: prometheus
-        target: /prometheus
-        type: volume
-      - source: ./Configurations/Prometheus/prometheus.yml
-        target: /etc/prometheus/prometheus.yml
+      - source: ./Configurations/Grafana/mimir.yml
+        target: /etc/mimir.yml
         type: bind
+      - source: mimir
+        target: /data
+        type: volume
+  minio:
+    image: minio/minio
+    entrypoint: [""]
+    command: ["sh", "-c", "mkdir -p /data/mimir && minio server --quiet /data"]
+    environment:
+      MINIO_ROOT_USER: mimir
+      MINIO_ROOT_PASSWORD: supersecret
+    volumes:
+      - source: minio
+        target: /data
+        type: volume
+  tempo:
+    command: ["-config.file=/etc/tempo.yml"]
+    image: grafana/tempo
+    volumes:
+      - source: ./Configurations/Grafana/tempo.yml
+        target: /etc/tempo.yml
+        type: bind
+      - source: tempo
+        target: /tmp/tempo
+        type: volume
 version: "3.7"
 volumes:
   grafana: ~
-  jaeger: ~
-  jaeger_tmp: ~
-  prometheus: ~
+  mimir: ~
+  minio: ~
+  tempo: ~

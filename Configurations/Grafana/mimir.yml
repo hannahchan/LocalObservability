@@ -1,0 +1,23 @@
+target: all
+
+common:
+  storage:
+    backend: s3
+    s3:
+      endpoint: minio:9000
+      access_key_id: mimir
+      secret_access_key: supersecret
+      insecure: true
+      bucket_name: mimir
+
+blocks_storage:
+  storage_prefix: blocks
+  tsdb:
+    dir: /data/ingester
+
+ingester:
+  ring:
+    replication_factor: 1
+
+limits:
+  max_global_exemplars_per_user: 1000000
