@@ -2,6 +2,7 @@
 services:
   grafana:
     depends_on:
+      - loki
       - mimir
       - tempo
     environment:
@@ -25,6 +26,13 @@ services:
       - source: ./Configurations/Grafana/datasources
         target: /etc/grafana/provisioning/datasources
         type: bind
+  loki:
+    command: -config.file=/etc/loki/local-config.yaml
+    image: grafana/loki
+    volumes:
+      - source: loki
+        target: /loki
+        type: volume
   opentelemetry-collector:
     command:
       [
@@ -32,9 +40,10 @@ services:
         "--feature-gates=pkg.translator.prometheus.NormalizeName",
       ]
     depends_on:
+      - loki
       - mimir
       - tempo
-    image: otel/opentelemetry-collector
+    image: otel/opentelemetry-collector-contrib
     ports:
       - mode: ingress
         protocol: tcp
@@ -92,6 +101,7 @@ services:
 version: "3.7"
 volumes:
   grafana: ~
+  loki: ~
   mimir: ~
   minio: ~
   tempo: ~
