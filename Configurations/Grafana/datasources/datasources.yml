@@ -11,7 +11,7 @@ datasources:
       derivedFields:
         - datasourceUid: tempo
           matcherRegex: '"traceid":\s*"([A-Fa-f0-9]{0,32})"'
-          name: TraceId
+          name: Trace ID
           url: $${__value.raw}
           urlDisplayLabel: Query with Tempo
   - access: proxy
@@ -35,6 +35,8 @@ datasources:
     uid: tempo
     url: http://tempo:3200
     jsonData:
+      lokiSearch:
+        datasourceUid: loki
       nodeGraph:
         enabled: true
       serviceMap:
