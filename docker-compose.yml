@@ -8,7 +8,7 @@ services:
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
-      GF_FEATURE_TOGGLES_ENABLE: tempoApmTable traceToMetrics
+      GF_FEATURE_TOGGLES_ENABLE: tempoApmTable traceqlEditor traceToMetrics
       GF_USERS_DEFAULT_THEME: light
     image: grafana/grafana
     ports:
