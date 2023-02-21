@@ -43,6 +43,8 @@ services:
       - loki
       - mimir
       - tempo
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     image: otel/opentelemetry-collector-contrib
     ports:
       - mode: ingress
