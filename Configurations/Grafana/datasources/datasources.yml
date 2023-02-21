@@ -49,10 +49,10 @@ datasources:
         filterByTraceID: true
         mapTagNamesEnabled: true
         mappedTags:
-        - key: service.name
-          value: service_name
-        - key: service.namespace
-          value: service_namespace
+          - key: service.name
+            value: service_name
+          - key: service.namespace
+            value: service_namespace
         spanEndTimeShift: 5m
         spanStartTimeShift: -5m
         tags: []
