@@ -33,7 +33,7 @@
       "title": "Reference",
       "tooltip": "Semantic Conventions for HTTP Metrics",
       "type": "link",
-      "url": "https://opentelemetry.io/docs/reference/specification/metrics/semantic_conventions/http-metrics/"
+      "url": "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#http-server"
     },
     {
       "asDropdown": true,
