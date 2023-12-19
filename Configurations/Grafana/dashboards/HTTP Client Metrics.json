@@ -70,7 +70,7 @@
             "mode": "absolute",
             "steps": []
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -96,13 +96,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Request Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Request Duration",
           "refId": "B"
@@ -150,7 +150,7 @@
             "mode": "absolute",
             "steps": []
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": [
           {
@@ -205,12 +205,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Average Request Duration",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_sum{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Instant Request Duration",
           "refId": "B"
         }
@@ -225,7 +225,7 @@
             "mode": "absolute",
             "steps": []
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -251,25 +251,25 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
-          "expr": "histogram_quantile(0.95, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
-          "expr": "histogram_quantile(0.85, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "50th Percentile",
           "refId": "D"
@@ -317,7 +317,7 @@
             "mode": "absolute",
             "steps": []
           },
-          "unit": "ms"
+          "unit": "s"
         },
         "overrides": [
           {
@@ -403,25 +403,25 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.99, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
           "refId": "A"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.95, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
           "refId": "B"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.85, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
           "refId": "C"
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.50, sum(rate(http_client_duration_milliseconds_bucket{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
           "refId": "D"
         }
@@ -474,13 +474,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Request Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Request Rate",
           "refId": "B"
@@ -583,12 +583,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Average Request Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`${http_status_code:regex}`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Instant Request Rate",
           "refId": "B"
         }
@@ -628,25 +628,25 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`.+`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "All Requests",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Successes (2xx)",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Client Errors (4xx)",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Server Errors (5xx)",
           "refId": "D"
@@ -779,22 +779,22 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`.+`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "All Requests",
           "refId": "A"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Successes (2xx)",
           "refId": "B"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Client Errors (4xx)",
           "refId": "C"
         },
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Server Errors (5xx)",
           "refId": "D"
         }
@@ -847,7 +847,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`.+`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Successes (2xx)",
           "refId": "A"
@@ -950,12 +950,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Average Success (2xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Instant Success (2xx) Rate",
           "refId": "B"
         }
@@ -996,7 +996,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`.+`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Client Errors (4xx)",
           "refId": "A"
@@ -1099,12 +1099,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Average Client Error (4xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Instant Client Error (4xx) Rate",
           "refId": "B"
         }
@@ -1145,7 +1145,7 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range])) /\nsum(increase(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`.+`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "% Server Errors (5xx)",
           "refId": "A"
@@ -1248,12 +1248,12 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Average Server Error (5xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "legendFormat": "Instant Server Error (5xx) Rate",
           "refId": "B"
         }
@@ -1294,13 +1294,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Success (2xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`2.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Success (2xx) Rate",
           "refId": "B"
@@ -1342,13 +1342,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Client Error (4xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`4.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Client Error (4xx) Rate",
           "refId": "B"
@@ -1390,13 +1390,13 @@
       "pluginVersion": "9.3.6",
       "targets": [
         {
-          "expr": "sum(rate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Average Server Error (5xx) Rate",
           "refId": "A"
         },
         {
-          "expr": "sum(irate(http_client_duration_milliseconds_count{job=~`${job:regex}`, http_method=~`${http_method:regex}`, http_status_code=~`5.*`, http_flavor=~`${http_flavor:regex}`, net_peer_name=~`${net_peer_name:regex}`, net_peer_port=~`${net_peer_port:regex}`}[$__range]))",
+          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
           "instant": true,
           "legendFormat": "Instant Server Error (5xx) Rate",
           "refId": "B"
@@ -1418,7 +1418,7 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, job)",
+        "definition": "label_values(http_client_request_duration_seconds_count, job)",
         "hide": 0,
         "includeAll": true,
         "label": "Job",
@@ -1426,7 +1426,7 @@
         "name": "job",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, job)",
+          "query": "label_values(http_client_request_duration_seconds_count, job)",
           "refId": "Prometheus-job-Variable-Query"
         },
         "refresh": 1,
@@ -1443,15 +1443,15 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, http_method)",
+        "definition": "label_values(http_client_request_duration_seconds_count, http_request_method)",
         "hide": 0,
         "includeAll": true,
-        "label": "HTTP Method",
+        "label": "HTTP Req. Method",
         "multi": true,
-        "name": "http_method",
+        "name": "http_request_method",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, http_method)",
+          "query": "label_values(http_client_request_duration_seconds_count, http_request_method)",
           "refId": "Prometheus-method-Variable-Query"
         },
         "refresh": 1,
@@ -1468,15 +1468,15 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, http_status_code)",
+        "definition": "label_values(http_client_request_duration_seconds_count, http_response_status_code)",
         "hide": 0,
         "includeAll": true,
-        "label": "HTTP Status Code",
+        "label": "HTTP Resp. Status Code",
         "multi": true,
-        "name": "http_status_code",
+        "name": "http_response_status_code",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, http_status_code)",
+          "query": "label_values(http_client_request_duration_seconds_count, http_response_status_code)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1492,15 +1492,15 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, http_flavor)",
+        "definition": "label_values(http_server_request_duration_seconds_count, network_protocol_name)",
         "hide": 0,
         "includeAll": true,
-        "label": "HTTP Flavor",
+        "label": "Net. Protocol Name",
         "multi": true,
-        "name": "http_flavor",
+        "name": "network_protocol_name",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, http_flavor)",
+          "query": "label_values(http_server_request_duration_seconds_count, network_protocol_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1516,15 +1516,15 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, net_peer_name)",
+        "definition": "label_values(http_server_request_duration_seconds_count, network_protocol_version)",
         "hide": 0,
         "includeAll": true,
-        "label": "Net. Peer Name",
+        "label": "Net. Protocol Version",
         "multi": true,
-        "name": "net_peer_name",
+        "name": "network_protocol_version",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, net_peer_name)",
+          "query": "label_values(http_server_request_duration_seconds_count, network_protocol_version)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1540,15 +1540,63 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "definition": "label_values(http_client_duration_milliseconds_count, net_peer_port)",
+        "definition": "label_values(http_client_request_duration_seconds_count, server_address)",
         "hide": 0,
         "includeAll": true,
-        "label": "Net. Peer Port",
+        "label": "Server Name",
         "multi": true,
-        "name": "net_peer_port",
+        "name": "server_address",
         "options": [],
         "query": {
-          "query": "label_values(http_client_duration_milliseconds_count, net_peer_port)",
+          "query": "label_values(http_client_request_duration_seconds_count, server_address)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_client_request_duration_seconds_count, server_port)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Server Port",
+        "multi": true,
+        "name": "server_port",
+        "options": [],
+        "query": {
+          "query": "label_values(http_client_request_duration_seconds_count, server_port)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "definition": "label_values(http_client_request_duration_seconds_count, url_scheme)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "URL Scheme",
+        "multi": true,
+        "name": "url_scheme",
+        "options": [],
+        "query": {
+          "query": "label_values(http_client_request_duration_seconds_count, url_scheme)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
