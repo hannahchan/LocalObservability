@@ -13,34 +13,17 @@ receivers:
             - http://*
             - https://*
 
-processors:
-  attributes:
-    actions:
-      - action: insert
-        key: event_domain
-        from_attribute: event.domain
-      - action: insert
-        key: loki.attribute.labels
-        value: event_domain
-  resource:
-    attributes:
-      - action: insert
-        key: service_name
-        from_attribute: service.name
-      - action: insert
-        key: service_namespace
-        from_attribute: service.namespace
-      - action: insert
-        key: loki.resource.labels
-        value: service_name, service_namespace
-
 exporters:
-  loki:
-    endpoint: http://loki:3100/loki/api/v1/push
+  otlphttp/loki:
+    endpoint: http://loki/otlp
+    tls:
+      insecure: true
+
   otlp:
     endpoint: tempo:4317
     tls:
       insecure: true
+
   prometheusremotewrite:
     endpoint: http://mimir:8080/api/v1/push
     tls:
@@ -53,22 +36,14 @@ service:
     - zpages
   pipelines:
     logs:
-      receivers:
-        - otlp
-      processors:
-        - resource
-        - attributes
-      exporters:
-        - loki
+      receivers: [otlp]
+      processors: []
+      exporters: [otlphttp/loki]
     metrics:
-      receivers:
-        - otlp
+      receivers: [otlp]
       processors: []
-      exporters:
-        - prometheusremotewrite
+      exporters: [prometheusremotewrite]
     traces:
-      receivers:
-        - otlp
+      receivers: [otlp]
       processors: []
-      exporters:
-        - otlp
+      exporters: [otlp]
