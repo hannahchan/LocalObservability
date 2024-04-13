@@ -6,7 +6,7 @@ extensions:
 receivers:
   otlp:
     protocols:
-      grpc: null
+      grpc:
       http:
         cors:
           allowed_origins:
@@ -14,22 +14,10 @@ receivers:
             - https://*
 
 exporters:
-  otlphttp/loki:
-    endpoint: http://loki/otlp
-    tls:
-      insecure: true
-
   otlp:
-    endpoint: tempo:4317
+    endpoint: otel-lgtm:4317
     tls:
       insecure: true
-
-  prometheusremotewrite:
-    endpoint: http://mimir:8080/api/v1/push
-    tls:
-      insecure: true
-    headers:
-      X-Scope-OrgID: local
 
 service:
   extensions:
@@ -38,11 +26,11 @@ service:
     logs:
       receivers: [otlp]
       processors: []
-      exporters: [otlphttp/loki]
+      exporters: [otlp]
     metrics:
       receivers: [otlp]
       processors: []
-      exporters: [prometheusremotewrite]
+      exporters: [otlp]
     traces:
       receivers: [otlp]
       processors: []

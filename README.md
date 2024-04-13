@@ -6,9 +6,9 @@ Spin up the _LocalObservability_ stack using [Docker Compose](https://docs.docke
 
 Then view your collected telemetry using Grafana at <http://localhost:3000>.
 
-The stack uses [Loki](https://grafana.com/oss/loki/) for storing logs, [Mimir](https://grafana.com/oss/mimir/) for storing metrics and [Tempo](https://grafana.com/oss/tempo/) for storing traces.
+The stack is based on [grafana/otel-lgtm](https://grafana.com/blog/2024/03/13/an-opentelemetry-backend-in-a-docker-image-introducing-grafana/otel-lgtm/) and uses [Loki](https://grafana.com/oss/loki/) for storing logs, [Prometheus](https://prometheus.io/) for storing metrics and [Tempo](https://grafana.com/oss/tempo/) for storing traces.
 
-You will probably need to configure the OpenTelemetry Collector to receive telemetry from your application.
+The stack uses a separate OpenTelemetry Collector instance which you can configure to receive telemetry from your application.
 
 ## Quick Links
 

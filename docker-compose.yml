@@ -1,51 +1,14 @@
 ---
+version: "3.7"
+
 services:
-  grafana:
-    depends_on:
-      - loki
-      - mimir
-      - tempo
-    environment:
-      GF_AUTH_ANONYMOUS_ENABLED: "true"
-      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
-      GF_FEATURE_TOGGLES_ENABLE: tempoApmTable traceqlEditor traceToMetrics
-      GF_USERS_DEFAULT_THEME: light
-    image: grafana/grafana
-    ports:
-      - mode: ingress
-        protocol: tcp
-        published: 3000
-        target: 3000
-    volumes:
-      - source: grafana
-        target: /var/lib/grafana
-        type: volume
-      - source: ./Configurations/Grafana/dashboards
-        target: /etc/grafana/provisioning/dashboards
-        type: bind
-      - source: ./Configurations/Grafana/datasources
-        target: /etc/grafana/provisioning/datasources
-        type: bind
-  loki:
-    command: -config.file=/etc/loki/local-config.yaml
-    image: grafana/loki
-    volumes:
-      - source: loki
-        target: /loki
-        type: volume
-  opentelemetry-collector:
-    command:
-      [
-        "--config=/etc/otel-collector.config.yml",
-        "--feature-gates=pkg.translator.prometheus.NormalizeName",
-      ]
-    depends_on:
-      - loki
-      - mimir
-      - tempo
+  otel-collector:
+    command: [ "--config=/etc/otel-collector.config.yml" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    image: otel/opentelemetry-collector-contrib
+    depends_on:
+      - otel-lgtm
+    image: otel/opentelemetry-collector
     ports:
       - mode: ingress
         protocol: tcp
@@ -64,46 +27,20 @@ services:
         published: 55679
         target: 55679
     volumes:
-      - source: ./Configurations/OpenTelemetry/otel-collector.config.yml
+      - source: ./otel-collector.config.yml
         target: /etc/otel-collector.config.yml
         type: bind
-  mimir:
-    depends_on:
-      - minio
-    image: grafana/mimir
-    command: ["-config.file=/etc/mimir.yml"]
-    volumes:
-      - source: ./Configurations/Grafana/mimir.yml
-        target: /etc/mimir.yml
-        type: bind
-      - source: mimir
-        target: /data
-        type: volume
-  minio:
-    image: minio/minio
-    entrypoint: [""]
-    command: ["sh", "-c", "mkdir -p /data/mimir && minio server --quiet /data"]
+
+  otel-lgtm:
     environment:
-      MINIO_ROOT_USER: mimir
-      MINIO_ROOT_PASSWORD: supersecret
-    volumes:
-      - source: minio
-        target: /data
-        type: volume
-  tempo:
-    command: ["-config.file=/etc/tempo.yml"]
-    image: grafana/tempo
-    volumes:
-      - source: ./Configurations/Grafana/tempo.yml
-        target: /etc/tempo.yml
-        type: bind
-      - source: tempo
-        target: /tmp/tempo
-        type: volume
-version: "3.7"
-volumes:
-  grafana: ~
-  loki: ~
-  mimir: ~
-  minio: ~
-  tempo: ~
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_USERS_DEFAULT_THEME: light
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    image: grafana/otel-lgtm
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 3000
+        target: 3000
