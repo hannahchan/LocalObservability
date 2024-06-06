@@ -1,6 +1,4 @@
 ---
-version: "3.7"
-
 services:
   otel-collector:
     command: [ "--config=/etc/otelcol-config.yml" ]

@@ -9,9 +9,8 @@ receivers:
       grpc:
       http:
         cors:
-          allowed_origins:
-            - http://*
-            - https://*
+          allowed_origins: ["*"]
+          allowed_headers: ["*"]
 
 exporters:
   otlp:
