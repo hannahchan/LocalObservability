@@ -4,7 +4,7 @@ services:
     command: [ "--config=/etc/otelcol-config.yml" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    image: otel/opentelemetry-collector
+    image: otel/opentelemetry-collector-contrib
     ports:
       - mode: ingress
         protocol: tcp
@@ -46,5 +46,25 @@ services:
         target: /data
         type: volume
 
+  clickhouse-server:
+    image: clickhouse/clickhouse-server
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 8123
+        target: 8123
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    volumes:
+      - source: clickhouse-server
+        target: /var/lib/clickhouse
+        type: volume
+      - source: clickhouse-server
+        target: /var/log/clickhouse-server/
+        type: volume
+
 volumes:
+  clickhouse-server: ~
   otel-lgtm: ~
