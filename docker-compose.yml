@@ -4,8 +4,6 @@ services:
     command: [ "--config=/etc/otelcol-config.yml" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    depends_on:
-      - otel-lgtm
     image: otel/opentelemetry-collector
     ports:
       - mode: ingress
@@ -24,6 +22,7 @@ services:
         protocol: tcp
         published: 55679
         target: 55679
+    restart: on-failure:3
     volumes:
       - source: ./otelcol-config.yml
         target: /etc/otelcol-config.yml
@@ -42,3 +41,10 @@ services:
         protocol: tcp
         published: 3000
         target: 3000
+    volumes:
+      - source: otel-lgtm
+        target: /data
+        type: volume
+
+volumes:
+  otel-lgtm: ~
