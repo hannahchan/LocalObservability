@@ -47,6 +47,8 @@ services:
         type: volume
 
   clickhouse-server:
+    environment:
+      CLICKHOUSE_SKIP_USER_SETUP: 1
     image: clickhouse/clickhouse-server
     ports:
       - mode: ingress
