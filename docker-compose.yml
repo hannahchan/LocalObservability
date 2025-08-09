@@ -4,7 +4,7 @@ services:
     command: [ "--config=/etc/otelcol-config.yml" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    image: otel/opentelemetry-collector
+    image: otel/opentelemetry-collector-contrib
     ports:
       - mode: ingress
         protocol: tcp
@@ -32,6 +32,7 @@ services:
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_PLUGINS_PREINSTALL: grafana-clickhouse-datasource
       GF_USERS_DEFAULT_THEME: light
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -45,6 +46,31 @@ services:
       - source: otel-lgtm
         target: /data
         type: volume
+      - source: ./grafana-custom-datasources.yml
+        target: /otel-lgtm/grafana/conf/provisioning/datasources/grafana-custom-datasources.yaml
+        type: bind
+
+  clickhouse-server:
+    environment:
+      CLICKHOUSE_SKIP_USER_SETUP: 1
+    image: clickhouse/clickhouse-server
+    ports:
+      - mode: ingress
+        protocol: tcp
+        published: 8123
+        target: 8123
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    volumes:
+      - source: clickhouse-server
+        target: /var/lib/clickhouse
+        type: volume
+      - source: clickhouse-server
+        target: /var/log/clickhouse-server/
+        type: volume
 
 volumes:
+  clickhouse-server: ~
   otel-lgtm: ~
