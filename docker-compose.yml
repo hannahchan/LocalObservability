@@ -1,7 +1,11 @@
 ---
 services:
   otel-collector:
-    command: [ "--config=/etc/otelcol-config.yml" ]
+    command:
+      [
+        "--config=/etc/otelcol-config.yml",
+        "--feature-gates=+service.profilesSupport",
+      ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
     image: otel/opentelemetry-collector-contrib
