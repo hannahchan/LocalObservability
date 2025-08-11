@@ -55,3 +55,6 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [otlp, clickhouse]
+    profiles:
+      receivers: [otlp]
+      exporters: [otlp]
