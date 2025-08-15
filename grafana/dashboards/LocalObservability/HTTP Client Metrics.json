@@ -1543,7 +1543,7 @@
         "definition": "label_values(http_client_request_duration_seconds_count, server_address)",
         "hide": 0,
         "includeAll": true,
-        "label": "Server Name",
+        "label": "Server Address",
         "multi": true,
         "name": "server_address",
         "options": [],
@@ -1626,7 +1626,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "HTTP Client Metrics",
+  "title": "HTTP Client Metrics (Classic Histogram)",
   "uid": "HttpClient",
   "version": 1,
   "weekStart": ""

@@ -1648,7 +1648,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "HTTP Server Metrics",
+  "title": "HTTP Server Metrics (Classic Histogram)",
   "uid": "HttpServer",
   "version": 1,
   "weekStart": ""
