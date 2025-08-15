@@ -93,7 +93,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -202,7 +202,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -248,7 +248,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "histogram_quantile(0.99, sum(rate(http_server_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
@@ -399,7 +399,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "exemplar": false,
@@ -471,7 +471,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -580,7 +580,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -625,7 +625,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -776,7 +776,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -844,7 +844,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -947,7 +947,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -993,7 +993,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1096,7 +1096,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1142,7 +1142,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1245,7 +1245,7 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1291,7 +1291,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1339,7 +1339,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
@@ -1387,7 +1387,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "expr": "sum(rate(http_server_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
