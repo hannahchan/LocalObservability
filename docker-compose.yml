@@ -50,8 +50,14 @@ services:
       - source: otel-lgtm
         target: /data
         type: volume
-      - source: ./grafana/datasources/datasources.yml
+      - source: ./grafana/datasources.yml
         target: /otel-lgtm/grafana/conf/provisioning/datasources/my-datasources.yaml
+        type: bind
+      - source: ./grafana/dashboards.yml
+        target: /otel-lgtm/grafana/conf/provisioning/dashboards/my-dashboards.yaml
+        type: bind
+      - source: ./grafana/dashboards
+        target: /tmp/dashboards
         type: bind
 
   clickhouse-server:
