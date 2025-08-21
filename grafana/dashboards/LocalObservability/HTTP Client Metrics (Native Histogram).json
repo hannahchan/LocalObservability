@@ -93,19 +93,27 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Average Request Duration",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_sum(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Instant Request Duration",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -202,17 +210,25 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Average Request Duration",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_sum{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_sum(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Instant Request Duration",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -248,31 +264,47 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "99th Percentile",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "95th Percentile",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "85th Percentile",
-          "refId": "C"
+          "refId": "C",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "instant": true,
           "legendFormat": "50th Percentile",
-          "refId": "D"
+          "refId": "D",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -399,31 +431,47 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
-          "refId": "C"
+          "refId": "C",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
           "exemplar": false,
-          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
+          "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
-          "refId": "D"
+          "refId": "D",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -471,19 +519,27 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Average Request Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Instant Request Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -580,17 +636,25 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Average Request Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Instant Request Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -625,31 +689,47 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "All Requests",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Successes (2xx)",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Client Errors (4xx)",
-          "refId": "C"
+          "refId": "C",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Server Errors (5xx)",
-          "refId": "D"
+          "refId": "D",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -776,27 +856,43 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "All Requests",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Successes (2xx)",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Client Errors (4xx)",
-          "refId": "C"
+          "refId": "C",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Server Errors (5xx)",
-          "refId": "D"
+          "refId": "D",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -844,13 +940,17 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Successes (2xx)",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -947,17 +1047,25 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Average Success (2xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Instant Success (2xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -993,13 +1101,17 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Client Errors (4xx)",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -1096,17 +1208,25 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Average Client Error (4xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Instant Client Error (4xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -1142,13 +1262,17 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) /\nsum(increase(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Server Errors (5xx)",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -1245,17 +1369,25 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Average Server Error (5xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "legendFormat": "Instant Server Error (5xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "timeseries"
@@ -1291,19 +1423,27 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Average Success (2xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Instant Success (2xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -1339,19 +1479,27 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Average Client Error (4xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Instant Client Error (4xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -1387,19 +1535,27 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
-          "expr": "sum(rate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(rate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Average Server Error (5xx) Rate",
-          "refId": "A"
+          "refId": "A",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         },
         {
-          "expr": "sum(irate(http_client_request_duration_seconds_count{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5.*`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))",
+          "expr": "sum(histogram_count(irate(http_client_request_duration_seconds{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "Instant Server Error (5xx) Rate",
-          "refId": "B"
+          "refId": "B",
+          "datasource": {
+            "uid": "prometheus",
+            "type": "prometheus"
+          }
         }
       ],
       "type": "stat"
@@ -1543,7 +1699,7 @@
         "definition": "label_values(http_client_request_duration_seconds_count, server_address)",
         "hide": 0,
         "includeAll": true,
-        "label": "Server Name",
+        "label": "Server Address",
         "multi": true,
         "name": "server_address",
         "options": [],
@@ -1626,8 +1782,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "HTTP Client Metrics",
-  "uid": "HttpClient",
+  "title": "HTTP Client Metrics (Native Histogram)",
+  "uid": "HttpClientMetricsNative",
   "version": 1,
   "weekStart": ""
 }
