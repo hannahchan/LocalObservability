@@ -434,7 +434,7 @@
       "pluginVersion": "12.0.2",
       "targets": [
         {
-          "exemplar": false,
+          "exemplar": true,
           "expr": "histogram_quantile(0.99, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "99th Percentile",
           "refId": "A",
@@ -444,7 +444,7 @@
           }
         },
         {
-          "exemplar": false,
+          "exemplar": true,
           "expr": "histogram_quantile(0.95, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "95th Percentile",
           "refId": "B",
@@ -454,7 +454,7 @@
           }
         },
         {
-          "exemplar": false,
+          "exemplar": true,
           "expr": "histogram_quantile(0.85, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "85th Percentile",
           "refId": "C",
@@ -464,7 +464,7 @@
           }
         },
         {
-          "exemplar": false,
+          "exemplar": true,
           "expr": "histogram_quantile(0.50, sum(rate(http_client_request_duration_seconds_bucket{job=~`${job:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`${http_response_status_code:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])) by (le))",
           "legendFormat": "50th Percentile",
           "refId": "D",
@@ -1574,6 +1574,10 @@
           "text": ["All"],
           "value": ["$__all"]
         },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
+        },
         "definition": "label_values(http_client_request_duration_seconds_count, job)",
         "hide": 0,
         "includeAll": true,
@@ -1598,6 +1602,10 @@
           "selected": true,
           "text": ["All"],
           "value": ["$__all"]
+        },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
         },
         "definition": "label_values(http_client_request_duration_seconds_count, http_request_method)",
         "hide": 0,
@@ -1624,6 +1632,10 @@
           "text": ["All"],
           "value": ["$__all"]
         },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
+        },
         "definition": "label_values(http_client_request_duration_seconds_count, http_response_status_code)",
         "hide": 0,
         "includeAll": true,
@@ -1647,6 +1659,10 @@
           "selected": true,
           "text": ["All"],
           "value": ["$__all"]
+        },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
         },
         "definition": "label_values(http_server_request_duration_seconds_count, network_protocol_name)",
         "hide": 0,
@@ -1672,6 +1688,10 @@
           "text": ["All"],
           "value": ["$__all"]
         },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
+        },
         "definition": "label_values(http_server_request_duration_seconds_count, network_protocol_version)",
         "hide": 0,
         "includeAll": true,
@@ -1695,6 +1715,10 @@
           "selected": true,
           "text": ["All"],
           "value": ["$__all"]
+        },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
         },
         "definition": "label_values(http_client_request_duration_seconds_count, server_address)",
         "hide": 0,
@@ -1720,6 +1744,10 @@
           "text": ["All"],
           "value": ["$__all"]
         },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
+        },
         "definition": "label_values(http_client_request_duration_seconds_count, server_port)",
         "hide": 0,
         "includeAll": true,
@@ -1743,6 +1771,10 @@
           "selected": true,
           "text": ["All"],
           "value": ["$__all"]
+        },
+        "datasource": {
+          "uid": "prometheus",
+          "type": "prometheus"
         },
         "definition": "label_values(http_client_request_duration_seconds_count, url_scheme)",
         "hide": 0,
