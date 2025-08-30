@@ -43,7 +43,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["opentelemetry", "semantic conventions", "http"],
+      "tags": ["opentelemetry", "semantic conventions", "http", "client"],
       "targetBlank": false,
       "title": "Related Dashboards",
       "tooltip": "",
@@ -341,7 +341,7 @@
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
-              "log": 10,
+              "log": 2,
               "type": "log"
             },
             "showPoints": "never",
@@ -441,7 +441,7 @@
         },
         "tooltip": {
           "hideZeros": false,
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -1436,7 +1436,7 @@
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
-              "log": 10,
+              "log": 2,
               "type": "log"
             },
             "showPoints": "never",
@@ -1536,7 +1536,7 @@
         },
         "tooltip": {
           "hideZeros": false,
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
