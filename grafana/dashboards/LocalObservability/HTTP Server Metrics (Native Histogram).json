@@ -271,7 +271,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
+          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "All Requests",
           "refId": "A"
@@ -452,7 +452,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__rate_interval])))",
+          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__rate_interval])))",
           "legendFormat": "All Requests",
           "refId": "A"
         },
@@ -547,7 +547,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
+          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`2..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Successes (2xx)",
           "refId": "A"
@@ -707,7 +707,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
+          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`4..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Client Errors (4xx)",
           "refId": "A"
@@ -867,7 +867,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.*`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
+          "expr": "sum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`5..`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range]))) /\nsum(histogram_count(increase(http_server_request_duration_seconds{service_name=~`${service_name:regex}`, http_request_method=~`${http_request_method:regex}`, http_response_status_code=~`.+`, http_route=~`${http_route:regex}`, network_protocol_name=~`${network_protocol_name:regex}`, network_protocol_version=~`${network_protocol_version:regex}`, server_address=~`${server_address:regex}`, server_port=~`${server_port:regex}`, url_scheme=~`${url_scheme:regex}`}[$__range])))",
           "instant": true,
           "legendFormat": "% Server Errors (5xx)",
           "refId": "A"
