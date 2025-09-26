@@ -16,6 +16,7 @@ receivers:
 
 processors:
   batch: ~
+  deltatocumulative: ~
 
 exporters:
   otlp:
@@ -49,7 +50,7 @@ service:
       exporters: [otlp, clickhouse]
     metrics:
       receivers: [otlp]
-      processors: [batch]
+      processors: [deltatocumulative, batch]
       exporters: [otlp, clickhouse]
     traces:
       receivers: [otlp]
