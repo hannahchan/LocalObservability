@@ -1633,14 +1633,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, http_request_method)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_request_method)",
         "includeAll": true,
         "label": "HTTP Req. Method",
         "multi": true,
         "name": "http_request_method",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, http_request_method)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_request_method)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1658,14 +1658,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, http_response_status_code)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_response_status_code)",
         "includeAll": true,
         "label": "HTTP Resp. Status Code",
         "multi": true,
         "name": "http_response_status_code",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, http_response_status_code)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_response_status_code)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1683,14 +1683,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, http_route)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_route)",
         "includeAll": true,
         "label": "HTTP Route",
         "multi": true,
         "name": "http_route",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, http_route)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, http_route)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1708,14 +1708,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, network_protocol_name)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, network_protocol_name)",
         "includeAll": true,
         "label": "Net. Protocol Name",
         "multi": true,
         "name": "network_protocol_name",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, network_protocol_name)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, network_protocol_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1733,14 +1733,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, network_protocol_version)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, network_protocol_version)",
         "includeAll": true,
         "label": "Net. Protocol Version",
         "multi": true,
         "name": "network_protocol_version",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, network_protocol_version)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, network_protocol_version)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1758,14 +1758,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, server_address)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, server_address)",
         "includeAll": true,
         "label": "Server Address",
         "multi": true,
         "name": "server_address",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, server_address)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, server_address)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1783,14 +1783,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, server_port)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, server_port)",
         "includeAll": true,
         "label": "Server Port",
         "multi": true,
         "name": "server_port",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, server_port)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, server_port)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1808,14 +1808,14 @@
           "type": "prometheus",
           "uid": "prometheus"
         },
-        "definition": "label_values(http_server_request_duration_seconds, url_scheme)",
+        "definition": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, url_scheme)",
         "includeAll": true,
         "label": "URL Scheme",
         "multi": true,
         "name": "url_scheme",
         "options": [],
         "query": {
-          "query": "label_values(http_server_request_duration_seconds, url_scheme)",
+          "query": "label_values(http_server_request_duration_seconds{service_name=~`${service_name:regex}`}, url_scheme)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
